@@ -45,3 +45,32 @@ nav {
 .menu a:hover {
     color: #169741;
 }
+
+.servicios {
+    padding: 50px;
+    text-align: center;
+}
+
+.servicios h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    text-align: left;
+}
+
+.servicios-item {
+    background-color: #F8F8F8;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.servicios-item img {
+    height: 10px;
+    border-radius: 5px;
+}

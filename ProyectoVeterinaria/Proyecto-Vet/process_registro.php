@@ -9,6 +9,7 @@
     $email_post = $_POST["email"];
     $user_post = $_POST["username"]; //con username se refiere al name="username" de registro.php
     $password_post = $_POST["password"];
+    $password_hash = password_hash($password_post, PASSWORD_BCRYPT);
 
     //Insersion
 
