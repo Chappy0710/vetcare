@@ -21,7 +21,7 @@
     <header>
     <nav class="navbar navbar-expand-lg">
         <div class="container-xxl" style="background-color: #72ECAF">
-            <img src="images/logo.png" alt="Logo Veterinaria" style='width: 200px; height= 200px;'>
+            <img src="images/logo.png" alt="Logo Veterinaria" style='width: 200px; height: 200px;'>
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
