@@ -12,34 +12,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
     <link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/bootstrap.bundle.min.js"></script>
 </head>  
 
-<body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="images/logo.png" alt="Logo Veterinaria">
-            </div>
-            <ul class="menu">
-                <?php foreach ($menu as $item) { ?>
-                    <li><a href="<?php echo $item["url"] ?>"><?php echo $item["name"] ?></a></li>         
-                <?php    }   ?>
-            </ul>
-        </nav>
-    </header>
-
+<body id="fondologinregistrar">
+    <br></br>
+    <br></br>
+    <br></br>
     <section>
-        <form method="POST" action="process_registro.php">
+        <form method="POST" action="process_registro.php" class="bg-white ounded">
+        <div>
+            <img class="container d-flex align-items-center justify-content-center" src="images/logo.png" alt="Logo Veterinaria" style='width: 200px; height= 200px;'>
+            <p class="container d-flex align-items-center justify-content-center" style="font-size: 20px;"><b>Registrarse en VetCare</b></p>
+        </div>
+        <br>
             <label>Nombre: </label><br>
             <input type="text" name="name"><br>
+            <br>
             <label>Email: </label><br>
             <input type="text" name="email"><br>
+            <br>
             <label>Usuario: </label><br>
             <input type="text" name="username"><br>
+            <br>
             <label>Contraseña: </label><br>
             <input type="password" name="password"><br>
-            <input type="submit" value="Registrarse">
+            <br>
+            <br>
+            <input type="submit" id="ingresar" value="Registrarse">
         </form>
+        <br>
+        <div class="container d-flex align-items-center justify-content-center">
+            <form method="POST" action="process_login.php" class="bg-white ounded">
+                <label class="container d-flex justify-content-center">Ya tienes cuenta?</label>
+                <a href="login.php" class="container d-flex align-items-center justify-content-center">Iniciar Sesión</a> 
+            </form>
+        </div>
     </section>
 </body>

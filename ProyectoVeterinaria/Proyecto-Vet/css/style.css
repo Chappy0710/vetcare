@@ -74,3 +74,94 @@ nav {
     height: 10px;
     border-radius: 5px;
 }
+
+.fondo{
+    background-color: #FAFAFA;
+}
+
+#letranav{
+    color: #FAFAFA;
+}
+
+#fondologinregistrar{
+    margin: 0; 
+    padding: 0;
+    background-image: url(https://cdn.discordapp.com/attachments/935264591305392151/1180028187556720650/gato_oscuro_2.0.png?ex=657bede3&is=656978e3&hm=75944c7cdbdaa6a90ed9880c4d6b8f6c8bcb7b80c0000e318c8fd92baaab8cfc&); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 100vh;
+    background-attachment: fixed;
+}
+
+
+
+
+form {
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 400px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+
+#ingresar{
+    background-color: #72ecaf;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button{
+    background-color: #72ecaf;
+    border: 0px;
+    height: 35px;
+    border-radius: 5px;
+    color: white;
+}
+
+input{
+    border-radius: 5px;
+    border-width: 1px;
+    width: 360px;
+}
+
+#fondo{
+    margin: 0; 
+    padding: 0; 
+    background-image: url(https://cdn.discordapp.com/attachments/935264591305392151/1180044870635765790/perrito_2_negro.png?ex=657bfd6d&is=6569886d&hm=97f725ae0d8d9243cb53b4477ad058c9d65c62116b33a146dd5b423f0ddb2f6c&); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 100vh;
+    background-attachment: fixed;
+}
+
+#infcontacto{
+    color: #FAFAFA;
+}
+
+#iconoinfo{
+    font-size: 62px;
+    color: #FAFAFA;
+}
