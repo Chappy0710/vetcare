@@ -1,12 +1,12 @@
-<?php
-include("menu.php");
-include("config.php");
-$menu = getMenu();
+<?php 
+    include("menu.php");
+    include("config.php");
+    $menu = getMenu();
 
-$conn = new mysqli($servername, $username, $password, $database);
-if ($conn->connect_error) {
-    die("Error de conexion " . $conn->connect_error);
-}
+    $conn = new mysqli($servername, $username, $password, $database);   
+        if($conn->connect_error){
+            die("Error de conexion ".$conn->connect_error);
+        }
 ?>
 
 <!DOCTYPE html>
@@ -15,10 +15,10 @@ if ($conn->connect_error) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios</title>
+    <title>Catalogo</title>
     <link rel="stylesheet" href="css/style.css">
 
-</head>
+</head>  
 
 <body>
     <header>
@@ -28,17 +28,17 @@ if ($conn->connect_error) {
             </div>
             <ul class="menu">
                 <?php foreach ($menu as $item) { ?>
-                    <li><a href="<?php echo $item["url"] ?>"><?php echo $item["name"] ?></a></li>
+                    <li><a href="<?php echo $item["url"] ?>"><?php echo $item["name"] ?></a></li>         
                 <?php    }   ?>
             </ul>
         </nav>
     </header>
 
     <section class="servicios">
-        <h2>Nuestros Servicios</h2>
+        <h2>Nuestros Catálogo</h2>
         <div class="servicios-grid">
             <?php
-            $sql = "SELECT * FROM servicios";
+            $sql = "SELECT * FROM catalogo";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
@@ -46,7 +46,7 @@ if ($conn->connect_error) {
             ?>
                     <div class="servicios-item">
                         <img src='<?php echo $row["image"] ?>'>
-                        <h3><?php echo $row["nombre"] ?></h3>
+                        <h3><?php echo $row["producto"] ?></h3>
                         <p><?php echo $row["descripcion"] ?></p>
                     </div>
             <?php }

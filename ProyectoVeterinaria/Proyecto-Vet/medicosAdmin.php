@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios Admin</title>
+    <title>Medicos Admin</title>
     <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -35,44 +35,50 @@ if ($conn->connect_error) {
     </header>
 
     <section class="servicios">
-        <h2>Crear Servicio</h2>
-        <form method="POST" action="process_serviciosAdmin.php">
-            <label>Nombre del Servicio: </label>
-            <input type="text" name="name"><br><br>
-            <label>Descripcion: </label>
-            <input type="text" name="descripcion"><br><br>
-            <label>Link de la imagen: </label>
-            <input type="text" name="imagen"><br><br><br>
+        <h2>Agregar Médico</h2>
+        <form method="POST" action="process_medicosAdmin.php">
+            <label>Nombre del Médico: </label>
+            <input type="text" name="nombre"><br><br>
+            <label>Primer Apellido: </label>
+            <input type="text" name="primer_apellido"><br><br>
+            <label>Segundo Apellido: </label>
+            <input type="text" name="segundo_apellido"><br><br>
+            <label>Teléfono: </label>
+            <input type="text" name="telefono"><br><br>
+            <label>Correo: </label>
+            <input type="text" name="correo"><br><br><br>
             <input type="submit" value="Guardar">
         </form>
     </section>
 
 
     <section class="servicios">
-        <h2>Eliminar Servicio</h2>
-        <form method="POST" action="process_serviciosAdminEliminar.php">
-            <label>Nombre del Servicio a Eliminar: </label>
-            <input type="text" name="nameElimnar"><br><br>
+        <h2>Eliminar Médico</h2>
+        <form method="POST" action="process_medicosAdminEliminar.php">
+            <label>Id del Médico a Eliminar: </label>
+            <input type="text" name="idElimnar"><br><br>
             <input type="submit" value="Eliminar">
         </form>
     </section>
 
 
     <section class="servicios">
-        <h2>Nuestros Servicios</h2>
+        <h2>Nuestros Medicos</h2>
         <div class="servicios-grid">
             <?php
-            $sql = "SELECT * FROM servicios";
+            $sql = "SELECT * FROM medicos";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
             ?>
                     <div class="servicios-item">
-                        <p>ID: <?php echo $row["id"] ?></p>
-                        <img src='<?php echo $row["image"] ?>'>
-                        <h3><?php echo $row["nombre"] ?></h3>
-                        <p><?php echo $row["descripcion"] ?></p>
+                        <p>ID: <?php echo $row["id_medico"] ?></p>
+                        <h3><?php echo $row["nombre"]. ' '.$row["primer_apellido"]. ' '.$row["segundo_apellido"]?></h3>
+                        <h3>Numero de Teléfono: </h3>
+                        <p><?php echo $row["telefono"] ?></p>
+                        <h3>Correo: </h3>
+                        <p><?php echo $row["correo"] ?></p><br>
                     </div>
             <?php }
             } ?>

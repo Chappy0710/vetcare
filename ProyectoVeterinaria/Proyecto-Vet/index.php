@@ -30,10 +30,11 @@
                     <div class="navbar-nav">
                         <a class="navbar-brand mb-0 h1" aria-current="page" id="letranav" href="index.php">Inicio</a>
                         <a class="navbar-brand mb-0 h1" aria-current="page" id="letranav" href="servicios.php">Servicios</a>
-                        <a class="navbar-brand mb-0 h1" aria-current="page" id="letranav" href="#">Catálogo</a>
-                        <a class="navbar-brand mb-0 h1" aria-current="page" id="letranav" href="#">Campañas</a>
+                        <a class="navbar-brand mb-0 h1" aria-current="page" id="letranav" href="catalogo.php">Catálogo</a>
+                        <a class="navbar-brand mb-0 h1" aria-current="page" id="letranav" href="campanas.php">Campañas</a>
                         <a class="navbar-brand mb-0 h1" aria-current="page" id="letranav" href="nosotros.php">Nosotros</a>
                         <a class="navbar-brand mb-0 h1" aria-current="page" id="letranav" href="contacto.php">Contacto</a>
+                        <a class="navbar-brand mb-0 h1" aria-current="page" id="letranav" href="resenas.php">Reseñas</a>
                         <a class="navbar-brand mb-0 h1" aria-current="page" id="letranav" href="login.php">Ingresar</a>
                     </div>
                 </div>

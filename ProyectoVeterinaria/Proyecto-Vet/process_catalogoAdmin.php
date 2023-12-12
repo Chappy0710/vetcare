@@ -5,17 +5,17 @@ if ($conn->connect_error) {
     die("Error de conexion " . $conn->connect_error);
 }
 
-$name_post = $_POST["name"];
+$producto_post = $_POST["producto"];
 $descripcion_post = $_POST["descripcion"];
-$imagen_post = $_POST["imagen"]; //con username se refiere al name="username" de registro.php
+$imagen_post = $_POST["imagen"]; 
 
 //Insersion
 
-$sql = "INSERT INTO servicios (nombre, descripcion, image)
-    VALUES ('$name_post', '$descripcion_post', '$imagen_post')";
+$sql = "INSERT INTO catalogo (producto, descripcion, image)
+    VALUES ('$producto_post', '$descripcion_post', '$imagen_post')";
 
 if ($conn->query($sql) == TRUE) {
-    header("Location: serviciosAdmin.php");
+    header("Location: catalogoAdmin.php");
     echo "Insertó Correctamente";
 } else {
     echo "Error de insertar registro" . $conn->connect_error;
