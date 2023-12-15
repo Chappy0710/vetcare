@@ -18,8 +18,13 @@ if ($conn->connect_error) {
     <script src="./js/bootstrap.bundle.min.js"></script>
 </head>
 
-<body class="fondo">
+<body id="fondo">
     <header>
         <?php include("menuAdmin.php"); ?>
     </header>
+    <br><br><br><br><br><br><br><br><br><br>
+    <center>
+        <h1 style="color: white; font-size: 200px;">Bienvenido!</h1>
+    </center>
+    
 </body>
