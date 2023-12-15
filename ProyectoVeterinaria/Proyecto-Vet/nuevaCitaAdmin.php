@@ -39,7 +39,7 @@
             <label>Costo de la Cita</label>
             <input type="text" name="costo"><br><br>
 
-            <input type="submit" value="Aregar Cita" style="background-color: #72ecaf; border-color: #4dab7a; width: 100%; height: 40px; color: white;  font-weight: bold; font-size: 18px;">
+            <input type="submit" value="Agregar Cita" style="background-color: #72ecaf; border-color: #4dab7a; width: 100%; height: 40px; color: white;  font-weight: bold; font-size: 18px;">
         </form>
     </section>
 
