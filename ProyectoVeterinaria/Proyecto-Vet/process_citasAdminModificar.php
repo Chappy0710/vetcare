@@ -5,15 +5,19 @@ if ($conn->connect_error) {
     die("Error de conexion " . $conn->connect_error);
 }
 
-$id_cita_post = $_POST["id_cita"];
 
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id_cita'])) {
+    $cita_id = $_GET['id_cita'];
 
+    $sqlDelete = "UPDATE citas set estado='Atendida' where id_cita='$cita_id'";
 
-$sql = "UPDATE citas set estado='Atendida' where id_cita='$id_cita_post'";
-if($conn->query($sql)==TRUE){
-    header("Location: citasAdmin.php");
-    echo "Se actualizo el registro.";
-} else {
-    echo "No se actualizo.";
+    if ($conn->query($sqlDelete) === TRUE) {
+        echo "<script>alert('La cita ha sido actualizada con éxito.'); window.location.href='citasAdmin.php';</script>";
+    } else {
+        $error_message = urlencode($conn->error);
+        echo $error_message;
+    }
+
+    $conn->close();
 }
-
+?>

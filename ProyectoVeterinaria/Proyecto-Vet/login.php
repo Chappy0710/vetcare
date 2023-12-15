@@ -1,7 +1,5 @@
 <?php 
-    include("menu.php");
     include("config.php");
-    $menu = getMenu();
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +23,7 @@
             <form method="POST" action="process_login.php" class="bg-white ounded">
                 <form method="POST" action="process_login.php">
                     <div>
-                        <img class="container d-flex align-items-center justify-content-center" src="images/logo.png" alt="Logo Veterinaria" style='width: 200px; height: 200px;'>
+                        <img class="container d-flex align-items-center justify-content-center" src="images/logo.png" alt="Logo Veterinaria" style='width: 200px;'>
                         <p class="container d-flex align-items-center justify-content-center" style="font-size: 20px;"><b>Iniciar Sesión en VetCare</b></p>
                     </div>
                     <br>

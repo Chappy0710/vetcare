@@ -1,8 +1,5 @@
 <?php
-include("menuAdmin.php");
 include("config.php");
-$menu = getMenuAdmin();
-
 $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Error de conexion " . $conn->connect_error);
@@ -15,59 +12,29 @@ if ($conn->connect_error) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Citas Admin</title>
+    <title>Servicios Admin</title>
     <link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body>
+<body id="fondo">
     <header>
-        <nav>
-            <div class="logo">
-                <img src="images/logo.png" alt="Logo Veterinaria">
-            </div>
-            <ul class="menu">
-                <?php foreach ($menu as $item) { ?>
-                    <li><a href="<?php echo $item["url"] ?>"><?php echo $item["name"] ?></a></li>
-                <?php    }   ?>
-            </ul>
-        </nav>
+        <?php include("menuAdmin.php"); ?>
     </header>
 
-    <section class="servicios">
-        <h2>Agregar Cita Nueva</h2>
-        <form method="POST" action="process_citasAdmin.php">
-            <label>Id del servicio: </label>
-            <input type="text" name="id_servicio"><br><br>
-            <label>Id del usuario que solicita la cita: </label>
-            <input type="text" name="id_user"><br><br>
-            <label>Fecha de la Cita: </label>
-            <input type="date" name="fecha"><br><br>
-            <label>Hora de la Cita: </label>
-            <input type="time" name="hora"><br><br>
-            <label>Id del Médico para la cita: </label>
-            <input type="text" name="id_medico"><br><br>
-            <label>Costo de la Cita</label>
-            <input type="text" name="costo"><br><br>
-            <input type="submit" value="Agregar Cita">
-        </form>
-
-    </section>
-
+    <br><br><br>
+    <b><h1 style='text-align: center; color: white;'>Citas Agendadas</h1></b>
+    <br>
+    <center>
+    <a href="nuevaCitaAdmin.php" style="text-decoration: none;"><button style="background: transparent;"><h5 style='color: white;'>
+    Agregar Cita <i class="fa-solid fa-plus" style="color: white"></i></h5></button></a>
+    </center>
 
     <section class="servicios">
-        <h2>Cambiar cita a "Atendida"</h2>
-        <form method="POST" action="process_citasAdminModificar.php">
-            <label>Id de cita a modificar: </label>
-            <input type="text" name="id_cita"><br><br>
-            <input type="submit" value="Cambiar estado">
-        </form>
-    </section>
-
-
-    <section class="servicios">
-        <h2>Citas</h2>
-        <div class="servicios-grid">
+        <div class="servicios-grid" style='justify-items: center; width: 1300px; margin-left: auto; margin-right: auto; grid-template-columns: repeat(3, 1fr);'>
             <?php
             $sql = "SELECT *
             FROM citas
@@ -77,16 +44,17 @@ if ($conn->connect_error) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
             ?>
-                    <div class="servicios-item">
-                        
-                        <h3>Fecha<?php echo ' '.$row["fecha"] ?></h3>
-                        <h3>Hora<?php echo ' '.$row["hora"] ?></h3>
-                        <h3>Estado: <?php echo ' '.$row["estado"] ?></h3>
-                        <p>ID Cita: <?php echo $row["id_cita"] ?></p>
-                        <p>ID Servicio: <?php echo $row["id_servicio"] ?></p>
-                        <p>ID Usuario: <?php echo $row["id_user"] ?></p>
-                        <p>ID Médico: <?php echo $row["id_medico"] ?></p>
-                        <h3>Costo<?php echo ' '.$row["costo"] ?></h3>
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://cdn.discordapp.com/attachments/935264591305392151/1185074778424483840/citas.jpg?ex=658e49e4&is=657bd4e4&hm=84d4e5d365b3e0c2e553cbbb8be75ece2e464bc43dcd99ca6efad0d0928cc89a&" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo ' '.$row["estado"] ?></h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">Cita</h6>
+                            <p class="card-text"><?php echo ' '.$row["fecha"] ?> a las <?php echo ' '.$row["hora"] ?> <br> <b>Servicio: </b>#<?php echo $row["id_servicio"] ?> <br> 
+                            <b>Cliente: </b>#<?php echo $row["id_user"] ?> <br> <b>Medico: </b>#<?php echo $row["id_medico"] ?></p>
+                            <h5 class="card-title">Costo = <?php echo ' '.$row["costo"] ?></h5>
+                        </div>
+                        <a href="process_citasAdminModificar.php?id_cita=<?php echo $row['id_cita']; ?>" class="d-grid gap-2">
+                        <button class="fa-solid fa-check" style="background-color: #7ED957; border-radius: 0 0 5px 5px;"></button></a>
                     </div>
             <?php }
             } ?>
@@ -94,3 +62,6 @@ if ($conn->connect_error) {
     </section>
 
 </body>
+
+
+

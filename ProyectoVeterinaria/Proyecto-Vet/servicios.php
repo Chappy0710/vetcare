@@ -1,8 +1,5 @@
 <?php
-include("menu.php");
 include("config.php");
-$menu = getMenu();
-
 $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Error de conexion " . $conn->connect_error);
@@ -17,26 +14,18 @@ if ($conn->connect_error) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicios</title>
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
-<body>
+<body id='fondo'>
     <header>
-        <nav>
-            <div class="logo">
-                <img src="images/logo.png" alt="Logo Veterinaria">
-            </div>
-            <ul class="menu">
-                <?php foreach ($menu as $item) { ?>
-                    <li><a href="<?php echo $item["url"] ?>"><?php echo $item["name"] ?></a></li>
-                <?php    }   ?>
-            </ul>
-        </nav>
+        <?php include("menup.php"); ?>
     </header>
+    <br><br><br>
+    <b><h1 style='text-align: center; color: white;'>Servicios Veterinarios</h1></b>
+    <h6 style='text-align: center; color: white;'>Contamos con la última tecnología para cuidar de tu mascota y solucionar su patología<h6>
 
     <section class="servicios">
-        <h2>Nuestros Servicios</h2>
-        <div class="servicios-grid">
+        <div class="servicios-grid" style='justify-items: center; width: 1300px; margin-left: auto; margin-right: auto; grid-template-columns: repeat(3, 1fr);'>
             <?php
             $sql = "SELECT * FROM servicios";
             $result = $conn->query($sql);
@@ -44,14 +33,20 @@ if ($conn->connect_error) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
             ?>
-                    <div class="servicios-item">
-                        <img src='<?php echo $row["image"] ?>'>
-                        <h3><?php echo $row["nombre"] ?></h3>
-                        <p><?php echo $row["descripcion"] ?></p>
+                    <div class="card" style="width: 18rem;">
+                        <img src="<?php echo $row["image"] ?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $row["nombre"] ?></h5>
+                            <p class="card-text"><?php echo $row["descripcion"] ?></p>
+                        </div>
                     </div>
             <?php }
             } ?>
         </div>
     </section>
-
 </body>
+
+
+
+
+

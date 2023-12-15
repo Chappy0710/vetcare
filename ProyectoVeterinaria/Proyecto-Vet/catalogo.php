@@ -1,8 +1,5 @@
-<?php 
-    include("menu.php");
+<?php
     include("config.php");
-    $menu = getMenu();
-
     $conn = new mysqli($servername, $username, $password, $database);   
         if($conn->connect_error){
             die("Error de conexion ".$conn->connect_error);
@@ -20,23 +17,17 @@
 
 </head>  
 
-<body>
+<body id="fondo">
     <header>
-        <nav>
-            <div class="logo">
-                <img src="images/logo.png" alt="Logo Veterinaria">
-            </div>
-            <ul class="menu">
-                <?php foreach ($menu as $item) { ?>
-                    <li><a href="<?php echo $item["url"] ?>"><?php echo $item["name"] ?></a></li>         
-                <?php    }   ?>
-            </ul>
-        </nav>
+        <?php include("menup.php"); ?>
     </header>
-
+    <br><br><br>
+    
+    <b><h1 style='text-align: center; color: white;'>Catalogo de Productos</h1></b>
+    <h6 style='text-align: center; color: white;'>Tenemos los productos de la mas alta calidad para tu mascota<h6>
+    
     <section class="servicios">
-        <h2>Nuestros Catálogo</h2>
-        <div class="servicios-grid">
+        <div class="servicios-grid" style='justify-items: center; width: 1300px; margin-left: auto; margin-right: auto; grid-template-columns: repeat(3, 1fr);'>
             <?php
             $sql = "SELECT * FROM catalogo";
             $result = $conn->query($sql);
@@ -44,10 +35,12 @@
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
             ?>
-                    <div class="servicios-item">
-                        <img src='<?php echo $row["image"] ?>'>
-                        <h3><?php echo $row["producto"] ?></h3>
-                        <p><?php echo $row["descripcion"] ?></p>
+                    <div class="card" style="width: 18rem;">
+                        <img src="<?php echo $row["image"] ?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $row["producto"] ?></h5>
+                            <p class="card-text"><?php echo $row["descripcion"] ?></p>
+                        </div>
                     </div>
             <?php }
             } ?>
@@ -55,3 +48,4 @@
     </section>
 
 </body>
+

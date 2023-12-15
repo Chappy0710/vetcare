@@ -1,7 +1,5 @@
-<?php 
-    include("menu.php");
+<?php
     include("config.php");
-    $menu = getMenu();
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +21,11 @@
     <section>
         <form method="POST" action="process_registroAdmin.php" class="bg-white ounded">
         <div>
-            <img class="container d-flex align-items-center justify-content-center" src="images/logo.png" alt="Logo Veterinaria" style='width: 200px; height: 200px;'>
-            <p class="container d-flex align-items-center justify-content-center" style="font-size: 20px;"><b>Registrarse como Admin en VetCare</b></p>
+            <img class="container d-flex align-items-center justify-content-center" src="images/logo.png" alt="Logo Veterinaria" style='width: 200px;'>
+            <center>
+                <p class="container d-flex align-items-center justify-content-center" style="font-size: 20px;"><b>Registrar un Admin en VetCare</b></p>
+            </center>
+            
         </div>
         <br>
             <label>Nombre: </label><br>

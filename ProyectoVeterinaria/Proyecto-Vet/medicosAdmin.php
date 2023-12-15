@@ -1,8 +1,5 @@
 <?php
-include("menuAdmin.php");
 include("config.php");
-$menu = getMenuAdmin();
-
 $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Error de conexion " . $conn->connect_error);
@@ -15,56 +12,29 @@ if ($conn->connect_error) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medicos Admin</title>
+    <title>Servicios Admin</title>
     <link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body>
+<body id="fondo">
     <header>
-        <nav>
-            <div class="logo">
-                <img src="images/logo.png" alt="Logo Veterinaria">
-            </div>
-            <ul class="menu">
-                <?php foreach ($menu as $item) { ?>
-                    <li><a href="<?php echo $item["url"] ?>"><?php echo $item["name"] ?></a></li>
-                <?php    }   ?>
-            </ul>
-        </nav>
+        <?php include("menuAdmin.php"); ?>
     </header>
 
-    <section class="servicios">
-        <h2>Agregar Médico</h2>
-        <form method="POST" action="process_medicosAdmin.php">
-            <label>Nombre del Médico: </label>
-            <input type="text" name="nombre"><br><br>
-            <label>Primer Apellido: </label>
-            <input type="text" name="primer_apellido"><br><br>
-            <label>Segundo Apellido: </label>
-            <input type="text" name="segundo_apellido"><br><br>
-            <label>Teléfono: </label>
-            <input type="text" name="telefono"><br><br>
-            <label>Correo: </label>
-            <input type="text" name="correo"><br><br><br>
-            <input type="submit" value="Guardar">
-        </form>
-    </section>
-
+    <br><br><br>
+    <b><h1 style='text-align: center; color: white;'>Médicos Veterinarios</h1></b>
+    <br>
+    <center>
+    <a href="nuevoMedicoAdmin.php" style="text-decoration: none;"><button style="background: transparent;"><h5 style='color: white;'>
+    Agregar Médico <i class="fa-solid fa-plus" style="color: white"></i></h5></button></a>
+    </center>
 
     <section class="servicios">
-        <h2>Eliminar Médico</h2>
-        <form method="POST" action="process_medicosAdminEliminar.php">
-            <label>Id del Médico a Eliminar: </label>
-            <input type="text" name="idElimnar"><br><br>
-            <input type="submit" value="Eliminar">
-        </form>
-    </section>
-
-
-    <section class="servicios">
-        <h2>Nuestros Medicos</h2>
-        <div class="servicios-grid">
+        <div class="servicios-grid" style='justify-items: center; width: 1300px; margin-left: auto; margin-right: auto; grid-template-columns: repeat(3, 1fr);'>
             <?php
             $sql = "SELECT * FROM medicos";
             $result = $conn->query($sql);
@@ -72,13 +42,20 @@ if ($conn->connect_error) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
             ?>
-                    <div class="servicios-item">
-                        <p>ID: <?php echo $row["id_medico"] ?></p>
-                        <h3><?php echo $row["nombre"]. ' '.$row["primer_apellido"]. ' '.$row["segundo_apellido"]?></h3>
-                        <h3>Numero de Teléfono: </h3>
-                        <p><?php echo $row["telefono"] ?></p>
-                        <h3>Correo: </h3>
-                        <p><?php echo $row["correo"] ?></p><br>
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://cdn.discordapp.com/attachments/935264591305392151/1185057732361977937/medicos.jpg?ex=658e3a04&is=657bc504&hm=99b2bf8519f3967941654c2e01f342feb4cb7d5d0d62fad909ef5382d59937ec&" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $row["nombre"]. ' '.$row["primer_apellido"]. ' '.$row["segundo_apellido"]?></h5>
+
+                            <h6><p class="card-text">Teléfono</p></h6>
+                            <p class="card-text"><?php echo $row["telefono"] ?></p>
+
+                            <h6><p class="card-text">Correo</p></h6>
+                            <p class="card-text"><?php echo $row["correo"] ?></p>
+                        </div>
+
+                        <a href="process_medicosAdminEliminar.php?id_medico=<?php echo $row['id_medico']; ?>" class="d-grid gap-2">
+                        <button class="fa-solid fa-trash" style="background-color: #DB1B1B; border-radius: 0 0 5px 5px;"></button></a>
                     </div>
             <?php }
             } ?>
@@ -86,3 +63,4 @@ if ($conn->connect_error) {
     </section>
 
 </body>
+        

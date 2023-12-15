@@ -6,12 +6,18 @@ if ($conn->connect_error) {
     die("Error de conexion " . $conn->connect_error);
 }
 
-$name_postEliminar = $_POST["nameElimnar"];
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
+    $servicio_id = $_GET['id'];
 
-$sql = "DELETE FROM servicios where nombre='$name_postEliminar'";
-if ($conn->query($sql) == TRUE) {
-    header("Location: serviciosAdmin.php");
-    echo "Se elimino el Servicio";
-} else {
-    echo "No se elimino el Servicio";
+    $sqlDelete = "DELETE FROM servicios where id='$servicio_id'";
+
+    if ($conn->query($sqlDelete) === TRUE) {
+        echo "<script>alert('El servicio ha sido eliminado con éxito.'); window.location.href='serviciosAdmin.php';</script>";
+    } else {
+        $error_message = urlencode($conn->error);
+        echo $error_message;
+    }
+
+    $conn->close();
 }
+?>

@@ -12,42 +12,23 @@
 
 <body id="fondo">
     <header>
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-xxl" style="background-color: #72ECAF">
-                <img src="images/logo.png" alt="Logo Veterinaria" style='width: 200px; height: 200px;'>
-                <div class="container-fluid">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse mx-auto justify-content-center w-500" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
-                        <a class="navbar-brand mb-0 h1" aria-current="page" id="letranav" href="index.php">Inicio</a>
-                        <a class="navbar-brand mb-0 h1" aria-current="page" id="letranav" href="servicios.php">Servicios</a>
-                        <a class="navbar-brand mb-0 h1" aria-current="page" id="letranav" href="catalogo.php">Catálogo</a>
-                        <a class="navbar-brand mb-0 h1" aria-current="page" id="letranav" href="campanas.php">Campañas</a>
-                        <a class="navbar-brand mb-0 h1" aria-current="page" id="letranav" href="nosotros.php">Nosotros</a>
-                        <a class="navbar-brand mb-0 h1" aria-current="page" id="letranav" href="contacto.php">Contacto</a>
-                        <a class="navbar-brand mb-0 h1" aria-current="page" id="letranav" href="resenas.php">Reseñas</a>
-                        <a class="navbar-brand mb-0 h1" aria-current="page" id="letranav" href="login.php">Ingresar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
+        <?php include("menup.php"); ?>
     </header>
     <br></br>
     <br></br>
     <br>
+    
     <section class="container d-flex align-items-center justify-content-center" style="width: 1150px;">
-        <div class="accordion" id="accordionExample" style="width: 1300px;">
-            <div class="accordion-item">
+        <div class="accordion" id="accordionExample" style="width: 1300px; --bs-accordion-border-color: rgba(0, 0, 0, 0);">
+            <div class="accordion-item" style="--bs-accordion-bg: none;">
                 <h2 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="--bs-accordion-active-color: white; --bs-accordion-active-bg: rgba(114, 236, 175, 0.5);">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" 
+                    style="--bs-accordion-active-color: white; --bs-accordion-active-bg: rgba(114, 236, 175, 0.5); --bs-accordion-btn-bg: rgba(114, 236, 175, 0.5); color: white; --bs-accordion-btn-bg: rgba(114, 236, 175, 1);">
                         <b>¿Por qué empezamos?</b>
                     </button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
+                    <div class="accordion-body" style="color: white">
                         <p>La historia de cómo comenzamos nuestra veterinaria se remonta a una conexión profunda con los animales y una pasión compartida por su bienestar.
                             Los fundadores de la veterinaria, Juan y María, siempre han sentido una conexión especial con los seres vivos de cuatro patas.</p>
 
@@ -69,14 +50,15 @@
                     </div>
                 </div>
             </div>
-            <div class="accordion-item">
+            <div class="accordion-item" style="--bs-accordion-bg: none;">
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="--bs-accordion-active-color: white; --bs-accordion-active-bg: rgba(114, 236, 175, 0.5);">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" 
+                    style="--bs-accordion-active-color: white; --bs-accordion-active-bg: rgba(114, 236, 175, 0.5); --bs-accordion-btn-bg: rgba(114, 236, 175, 0.5); color: white; --bs-accordion-btn-bg: rgba(114, 236, 175, 1);">
                         <b>¿Qué son nuestros productos?</b>
                     </button>
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
+                    <div class="accordion-body" style="color: white">
                         <p>Nuestros productos no son solo artículos en estanterías; son el resultado de una profunda dedicación a la salud y felicidad de los animales. Todo comenzó con la visión de crear algo
                             más que una tienda de suministros para mascotas: queríamos ofrecer soluciones integrales y productos cuidadosamente seleccionados que mejoraran la calidad de vida de nuestros amigos peludos.</p>
                         <p>La idea surgió cuando nos dimos cuenta de que, a pesar de la abundancia de productos en el mercado, algunos carecían de la calidad y la atención especial que nuestros amigos peludos merecen.
@@ -92,14 +74,15 @@
                     </div>
                 </div>
             </div>
-            <div class="accordion-item">
+            <div class="accordion-item" style="--bs-accordion-bg: none;">
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="--bs-accordion-active-color: white; --bs-accordion-active-bg: rgba(114, 236, 175, 0.5);">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" 
+                    style="--bs-accordion-active-color: white; --bs-accordion-active-bg: rgba(114, 236, 175, 0.5); --bs-accordion-btn-bg: rgba(114, 236, 175, 0.5); color: white; --bs-accordion-btn-bg: rgba(114, 236, 175, 1);">
                         <b>¿Quiénes somos?</b>
                     </button>
                 </h2>
                 <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
+                    <div class="accordion-body" style="color: white">
                         <p>Somos más que una simple clínica veterinaria; somos amantes de los animales comprometidos con el bienestar y la salud de tus compañeros peludos. Nos enorgullece ser un equipo dedicado de
                             profesionales que comparten una pasión común por los animales y están comprometidos con brindar la mejor atención posible.</p>
                         <p>En nuestra veterinaria, no solo encontrarás servicios médicos de alta calidad, sino también un ambiente cálido y acogedor donde tanto tú como tus mascotas se sientan cómodos.

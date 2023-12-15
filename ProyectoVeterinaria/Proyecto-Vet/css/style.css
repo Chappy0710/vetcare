@@ -51,10 +51,6 @@ nav {
     text-align: center;
 }
 
-.servicios h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
 
 .servicios-grid {
     display: grid;
@@ -149,7 +145,7 @@ input{
 #fondo{
     margin: 0; 
     padding: 0; 
-    background-image: url(https://cdn.discordapp.com/attachments/935264591305392151/1180044870635765790/perrito_2_negro.png?ex=657bfd6d&is=6569886d&hm=97f725ae0d8d9243cb53b4477ad058c9d65c62116b33a146dd5b423f0ddb2f6c&); 
+    background-image: url(https://cdn.discordapp.com/attachments/935264591305392151/1184976219960258610/perritonegron.png?ex=658dee1a&is=657b791a&hm=fb4ae13e0ddf138e72ca6f42ea5957c7d3c53c1ec3248daf95b005950fc339f1&); 
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
@@ -164,4 +160,8 @@ input{
 #iconoinfo{
     font-size: 62px;
     color: #FAFAFA;
+}
+
+#fondoblanco{
+    background-color: #F8F8F8;
 }

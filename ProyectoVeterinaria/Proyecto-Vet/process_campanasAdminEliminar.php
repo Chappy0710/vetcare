@@ -6,12 +6,18 @@ if ($conn->connect_error) {
     die("Error de conexion " . $conn->connect_error);
 }
 
-$IdElimnar_postEliminar = $_POST["IdElimnar"];
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id_campana'])) {
+    $campana_id = $_GET['id_campana'];
 
-$sql = "DELETE FROM campanas where id_campana='$IdElimnar_postEliminar'";
-if ($conn->query($sql) == TRUE) {
-    header("Location: campanasAdmin.php");
-    echo "Se elimino la campaña";
-} else {
-    echo "No se elimino la campaña";
+    $sqlDelete = "DELETE FROM campanas where id_campana='$campana_id'";
+
+    if ($conn->query($sqlDelete) === TRUE) {
+        echo "<script>alert('La campaña ha sido eliminada con éxito.'); window.location.href='campanasAdmin.php';</script>";
+    } else {
+        $error_message = urlencode($conn->error);
+        echo $error_message;
+    }
+
+    $conn->close();
 }
+?>

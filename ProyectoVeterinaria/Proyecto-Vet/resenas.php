@@ -1,8 +1,5 @@
 <?php
-include("menu.php");
 include("config.php");
-$menu = getMenu();
-
 $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Error de conexion " . $conn->connect_error);
@@ -17,47 +14,26 @@ if ($conn->connect_error) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicios</title>
     <link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body>
+<body id="fondo">
     <header>
-        <nav>
-            <div class="logo">
-                <img src="images/logo.png" alt="Logo Veterinaria">
-            </div>
-            <ul class="menu">
-                <?php foreach ($menu as $item) { ?>
-                    <li><a href="<?php echo $item["url"] ?>"><?php echo $item["name"] ?></a></li>
-                <?php    }   ?>
-            </ul>
-        </nav>
+        <?php include("menup.php"); ?>
     </header>
-
-    <section>
-        <h2>Dejar Reseña</h2>
-        <form method="POST" action="process_resenas.php">
-            <label>Reseña: </label>
-            <input type="text" name="resena"><br><br>
-
-            <label>Calificación: </label>
-            <select name="calificacion">
-                <?php
-                // Utilizando un bucle para generar opciones del 1 al 10
-                for ($i = 1; $i <= 10; $i++) {
-                    echo "<option value=\"$i\">$i</option>";
-                }
-                ?>
-            </select><br><br>
-
-            <input type="submit" value="Agregar reseña">
-        </form>
-    </section>
-
+    <br><br><br>
+    <b><h1 style='text-align: center; color: white;'>Reseñas de Nuestros Clientes </h1></b>
+    <br>
+    <center>
+    <a href="nuevaResena.php" style="text-decoration: none;"><button style="background: transparent;"><h5 style='color: white;'>
+    Dejamos tu Opinión <i class="fa-solid fa-plus" style="color: white"></i></h5></button></a>
+    
+    </center>
 
     <section class="servicios">
-        <h2>Reseñas anteriores</h2>
-        <div class="servicios-grid">
+
+        <div class="servicios-grid" style='justify-items: center; width: 1300px; margin-left: auto; margin-right: auto; grid-template-columns: repeat(2, 1fr);'>
             <?php
             $sql = "SELECT * FROM resenas";
             $result = $conn->query($sql);
@@ -65,11 +41,11 @@ if ($conn->connect_error) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
             ?>
-                    <div class="servicios-item">
-                        <h3>Reseña: </h3>
-                        <p><?php echo $row["resena"] ?></p>
-                        <h3>Calificación del 1 al 10: </h3>
-                        <p><?php echo $row["calificacion"] ?></p>
+                    <div class="card" style="width: 30rem;">
+                        <div class="card-body">
+                            <p class="card-text"><?php echo $row["resena"] ?></p>
+                            <p class="card-text" style="font-size: 18px;"><i class="fa-solid fa-star" style="color: #FFDE5A;">  </i><?php echo $row["calificacion"] ?></p>
+                        </div>
                     </div>
             <?php }
             } ?>

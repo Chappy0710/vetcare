@@ -1,8 +1,5 @@
 <?php
-include("menu.php");
 include("config.php");
-$menu = getMenu();
-
 $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Error de conexion " . $conn->connect_error);
@@ -20,23 +17,16 @@ if ($conn->connect_error) {
 
 </head>
 
-<body>
+<body id="fondo">
     <header>
-        <nav>
-            <div class="logo">
-                <img src="images/logo.png" alt="Logo Veterinaria">
-            </div>
-            <ul class="menu">
-                <?php foreach ($menu as $item) { ?>
-                    <li><a href="<?php echo $item["url"] ?>"><?php echo $item["name"] ?></a></li>
-                <?php    }   ?>
-            </ul>
-        </nav>
+        <?php include("menup.php"); ?>
     </header>
 
+    <br><br><br>
+    <b><h1 style='text-align: center; color: white;'>Próximas Campañas</h1></b>
+
     <section class="servicios">
-        <h2>Nuestras Campañas</h2>
-        <div class="servicios-grid">
+        <div class="servicios-grid" style='justify-items: center; width: 1300px; margin-left: auto; margin-right: auto; grid-template-columns: repeat(3, 1fr);'>
             <?php
             $sql = "SELECT * FROM campanas";
             $result = $conn->query($sql);
@@ -44,11 +34,14 @@ if ($conn->connect_error) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
             ?>
-                    <div class="servicios-item">
-                        <h3><?php echo $row["nombre"] ?></h3>
-                        <h3>Fecha:<?php echo ' '.$row["fecha"] ?></h3>
-                        <p><?php echo $row["lugar"] ?></p>
-                        <p><?php echo $row["descripcion"] ?></p>
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $row["nombre"] ?></h5>
+                            <br>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">Fecha: <?php echo ' '.$row["fecha"] ?></h6>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">Ubucación: <?php echo $row["lugar"] ?></h6>
+                            <p class="card-text"><?php echo $row["descripcion"] ?></p>
+                        </div>
                     </div>
             <?php }
             } ?>

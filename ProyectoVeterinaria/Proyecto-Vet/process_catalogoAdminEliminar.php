@@ -6,12 +6,18 @@ if ($conn->connect_error) {
     die("Error de conexion " . $conn->connect_error);
 }
 
-$producto_postEliminar = $_POST["productoElimnar"];
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
+    $producto_id = $_GET['id'];
 
-$sql = "DELETE FROM catalogo where producto='$producto_postEliminar'";
-if ($conn->query($sql) == TRUE) {
-    header("Location: catalogoAdmin.php");
-    echo "Se elimino el Producto";
-} else {
-    echo "No se elimino el Producto";
+    $sqlDelete = "DELETE FROM catalogo where id='$producto_id'";
+
+    if ($conn->query($sqlDelete) === TRUE) {
+        echo "<script>alert('El producto ha sido eliminado con éxito.'); window.location.href='catalogoAdmin.php';</script>";
+    } else {
+        $error_message = urlencode($conn->error);
+        echo $error_message;
+    }
+
+    $conn->close();
 }
+?>
